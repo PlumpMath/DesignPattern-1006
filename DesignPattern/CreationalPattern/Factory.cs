@@ -92,7 +92,7 @@ namespace DesignPattern.CreationalPattern
         //e quindi quale operazione dovra essere implementata (ad esempio export diversi di stessa base dati, o creazioni
         //di prodotti diversi (figure geometriche diverse, ecc ecc)
 
-        public static class Client
+        public static class ClientFactory
         {
 
             public static void Create()
