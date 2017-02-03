@@ -11,7 +11,6 @@ namespace DesignPattern.CreationalPattern
     //Rappresenta l’interfaccia di riferimento(generalmente astratta) 
     //per la creazione delle parti costituenti l’oggetto da costruire
     //E' una interfaccia che definisce gli steps per la creazione di un "prodotto"
-
     public interface IBuilder
     {
         void buildPart1();
@@ -77,8 +76,14 @@ namespace DesignPattern.CreationalPattern
     //Infatti il client (Program) istanzia questo oggetto configurandolo in maniera tale da farlo operare con l’oggetto Builder desiderato.
     public class Director
     {
-        public static Veicolo CreateVeicolo(IBuilder someBuilder)
+        public static Veicolo CreateVeicolo(/*IBuilder someBuilder*/)
         {
+            var someBuilder = new ConcreteBuilder(); 
+            //il pattern builder non nasce per instanziare tipi diversi di oggetto (in questo caso tipi diversi di veicolo)
+            //ma piuttosto per rendere modulare e quindi customizzabile la creazione delle parti di un oggetto complesso
+            //Infatti builder ha molti metodi (buildpart1, buildpart2) che potrei non aver bisogno di istanziare necessariamente
+            //tutti ma solo un sottoinsieme di essi. La differenza col pattern factory è che quello nasce invece per definire una
+            //interfaccia comune per istanziare oggetti concreti diversi. Ovviamente possono essere integrati i due pattern                                                                   
             someBuilder.buildPart1();
             someBuilder.buildPart2();
             someBuilder.buildPart3();
